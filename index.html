@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resonance — Research Execution Cockpit</title>
+  <meta name="description" content="Resonance is a research project management dashboard for the Vibe Coding + Vibe Research workflow. Track experiments, manage literature, generate plans with AI, and ship artifacts.">
+  <meta name="keywords" content="research management, vibe coding, vibe research, AI planning, literature manager, project dashboard">
+  <meta property="og:title" content="Resonance — Research Execution Cockpit">
+  <meta property="og:description" content="Portfolio + execution cockpit for research projects. Track papers, experiments, and deliverables.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◉</text></svg>">
+  <script src="config.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     NAVIGATION
+     ════════════════════════════════════════════════════════ -->
+<nav class="nav" id="top">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-brand">
+      <span class="nav-brand-name">◉ Resonance</span>
+      <span class="nav-brand-sub">Research Execution Cockpit</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#quickstart">Quickstart</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#docs">Docs</a></li>
+      <li><a href="#" id="nav-github" class="external" target="_blank" rel="noopener">GitHub ↗</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════ -->
+<section class="hero section" id="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <span class="badge badge-accent">Open-Source Research Tool</span>
+    </div>
+    <h1 class="animate-in" id="hero-title">Resonance</h1>
+    <p class="hero-tagline animate-in delay-1" id="hero-tagline">
+      Research execution cockpit for portfolio + papers + literature
+    </p>
+    <p class="hero-description animate-in delay-2">
+      Manage your entire research portfolio from a single dashboard. Create projects, import literature from Undermind or Zotero, track vibe coding and vibe research execution steps, generate daily and weekly reports, and ship artifacts — all powered by AI-assisted templates.
+    </p>
+    <div class="hero-ctas animate-in delay-3">
+      <a href="#" id="cta-app" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Open App
+      </a>
+      <a href="#quickstart" class="btn btn-secondary">
+        Get Started
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     STATS STRIP
+     ════════════════════════════════════════════════════════ -->
+<section class="stats" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" id="stat-projects">24</div>
+        <div class="stat-label">Projects Tracked</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-papers">1,847</div>
+        <div class="stat-label">Papers Indexed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-steps">312</div>
+        <div class="stat-label">Execution Steps</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" id="stat-reports">96</div>
+        <div class="stat-label">Reports Generated</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     QUICKSTART
+     ════════════════════════════════════════════════════════ -->
+<section class="section" id="quickstart">
+  <div class="container">
+    <div class="section-header">
+      <h2>Quickstart</h2>
+      <p>Four steps from zero to a fully managed research project.</p>
+    </div>
+
+    <div class="quickstart-steps">
+      <!-- Step 1 -->
+      <div class="step-card animate-in">
+        <div class="step-num">1</div>
+        <h3>Create Project &amp; Import Template</h3>
+        <p>Create a new project from the dashboard, then download the YAML template. Fill it with any LLM (GPT-4, Gemini, Claude) and upload the result.</p>
+        <div class="step-code">
+          <span class="comment"># 1. Create project via UI or API</span><br>
+          <span class="cmd">POST</span> <span class="str">/api/v1/projects/import</span><br>
+          <span class="kw">{ "id": "my-project", "name": "My Research" }</span><br><br>
+          <span class="comment"># 2. Download template, fill with AI, upload</span><br>
+          <span class="cmd">GET</span>  <span class="str">/api/v1/templates/project_content</span><br>
+          <span class="cmd">POST</span> <span class="str">/api/v1/projects/my-project/import_template</span>
+        </div>
+        <div class="step-result">Overview, plans, steps, timeline auto-generated</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card animate-in delay-1">
+        <div class="step-num">2</div>
+        <h3>Import Literature CSV</h3>
+        <p>Upload a CSV export from <strong>Undermind</strong> or <strong>Zotero</strong>. Format is auto-detected; you can also select it manually from the dropdown.</p>
+        <div class="step-code">
+          <span class="comment"># Upload CSV — format auto-detected</span><br>
+          <span class="cmd">POST</span> <span class="str">/api/v1/literature/projects/{id}/import_csv</span><br>
+          <span class="kw">Content-Type: multipart/form-data</span><br>
+          <span class="kw">file: papers.csv</span><br>
+          <span class="kw">csv_format: auto | undermind | zotero</span>
+        </div>
+        <div class="step-result">Papers parsed, deduped, and indexed with tags</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card animate-in delay-2">
+        <div class="step-num">3</div>
+        <h3>Track Execution</h3>
+        <p>Cycle execution step statuses (todo → doing → done → blocked). Log progress with timestamped punch-in entries. Check off vibe coding and vibe research items.</p>
+        <div class="step-code">
+          <span class="comment"># Update a step status</span><br>
+          <span class="cmd">PATCH</span> <span class="str">/api/v1/projects/{id}/execution/vc/{stepId}</span><br>
+          <span class="kw">{ "status": "doing" }</span><br><br>
+          <span class="comment"># Append a log entry</span><br>
+          <span class="cmd">POST</span> <span class="str">/api/v1/projects/{id}/logs/vibe_coding</span><br>
+          <span class="kw">{ "entry": "Implemented data loader" }</span>
+        </div>
+        <div class="step-result">Progress bars update on Home dashboard</div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card animate-in delay-3">
+        <div class="step-num">4</div>
+        <h3>Generate Reports</h3>
+        <p>Generate daily or weekly reports from real project data — checklist progress, logs, artifact additions, literature imports, and milestone status changes.</p>
+        <div class="step-code">
+          <span class="comment"># Generate daily report</span><br>
+          <span class="cmd">POST</span> <span class="str">/api/v1/reports/daily</span><br><br>
+          <span class="comment"># Generate weekly report</span><br>
+          <span class="cmd">POST</span> <span class="str">/api/v1/reports/weekly</span><br><br>
+          <span class="comment"># Reports saved to reports/daily/ and reports/weekly/</span>
+        </div>
+        <div class="step-result">Markdown reports with progress deltas and summaries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FEATURES
+     ════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Features</h2>
+      <p>Everything you need to manage research projects end-to-end.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-accent-light);color:var(--c-accent)">◧</div>
+        <h3>Portfolio Dashboard</h3>
+        <p>Project cards with priority badges, RAG status, dual VC/VR progress bars, blocker counts, and literature metrics. Sort and filter across your entire research portfolio.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-emerald-light);color:var(--c-emerald)">◉</div>
+        <h3>Overview-First Project Pages</h3>
+        <p>Structured project overview with section cards, accordions, milestone tables, and next-actions checklists. The single source of truth for each project.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-sky-light);color:var(--c-sky)">◈</div>
+        <h3>Literature Ingestion</h3>
+        <p>Import CSV from Undermind or Zotero with auto-format detection. Search, tag, and annotate papers. Track citation counts and link papers to projects.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-amber-light);color:var(--c-amber)">◆</div>
+        <h3>Artifact Registry + Timeline</h3>
+        <p>Track code repos, datasets, papers, demos, and reports with color-coded type badges. Milestones with deadlines, acceptance criteria, and kanban boards.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-rose-light);color:var(--c-rose)">▤</div>
+        <h3>Daily &amp; Weekly Reports</h3>
+        <p>Auto-generated reports derived from real project data — step progress, log entries, artifact additions, literature imports, and milestone status changes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-accent-light);color:var(--c-accent)">✦</div>
+        <h3>AI Template Generation</h3>
+        <p>Download a YAML template, fill it with any LLM, and upload. The system generates overviews, experiment plans, paper plans, execution steps, and timelines.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-emerald-light);color:var(--c-emerald)">⚙</div>
+        <h3>Multi-Provider Config</h3>
+        <p>Configure AI providers including OpenAI, Anthropic, Google, and MiniMax. Per-provider API keys, model selection, and context window settings.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-sky-light);color:var(--c-sky)">⇄</div>
+        <h3>Execution Steps</h3>
+        <p>Structured VC and VR execution steps with status cycling (todo → doing → done → blocked). Inline editing, acceptance criteria, and milestone linking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:var(--c-amber-light);color:var(--c-amber)">⛁</div>
+        <h3>Data Maintenance</h3>
+        <p>Reindex literature, rebuild project caches, and export full data summaries. System health dashboard with data path inspection and integrity checks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     DEMO
+     ════════════════════════════════════════════════════════ -->
+<section class="section" id="demo">
+  <div class="container">
+    <div class="section-header">
+      <h2>Demo</h2>
+      <p>A preview of the Resonance dashboard interface.</p>
+    </div>
+
+    <div class="demo-grid">
+      <!-- Project Card Mock -->
+      <div class="demo-card">
+        <div class="demo-card-header">
+          <h4>Project Card</h4>
+          <span class="badge badge-accent">Dashboard</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="mock-project">
+            <div class="mock-project-header">
+              <span class="mock-project-title">Adversarial Robustness for LLMs</span>
+              <span class="badge badge-rose">P0</span>
+            </div>
+            <div>
+              <div class="mock-row" style="margin-bottom:4px">
+                <span>Vibe Coding</span><span style="font-family:var(--font-mono);font-weight:600">72%</span>
+              </div>
+              <div class="mock-progress"><div class="mock-progress-fill vc" style="width:72%"></div></div>
+            </div>
+            <div>
+              <div class="mock-row" style="margin-bottom:4px">
+                <span>Vibe Research</span><span style="font-family:var(--font-mono);font-weight:600">45%</span>
+              </div>
+              <div class="mock-progress"><div class="mock-progress-fill vr" style="width:45%"></div></div>
+            </div>
+            <div class="mock-row">
+              <div style="display:flex;gap:6px">
+                <span class="badge badge-emerald">Imported</span>
+                <span class="badge badge-sky">23 papers</span>
+              </div>
+              <span style="color:var(--c-text-muted);font-family:var(--font-mono)">Mar 1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overview Mock -->
+      <div class="demo-card">
+        <div class="demo-card-header">
+          <h4>Overview Sections</h4>
+          <span class="badge badge-emerald">Project Page</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="mock-overview-sections">
+            <div class="mock-ov-section">
+              <h5>1. Project Definition</h5>
+              <p>Investigate adversarial attack vectors on large language models with focus on prompt injection and jailbreak defenses.</p>
+            </div>
+            <div class="mock-ov-section" style="border-color:var(--c-emerald)">
+              <h5>2. Key Concepts</h5>
+              <p>Adversarial examples, prompt injection, red-teaming, safety fine-tuning, constitutional AI.</p>
+            </div>
+            <div class="mock-ov-section" style="border-color:var(--c-amber)">
+              <h5>3. Milestones</h5>
+              <p>Literature survey (W2) → Baseline attacks (W4) → Defense implementation (W6) → Paper draft (W8).</p>
+            </div>
+            <div class="mock-ov-section" style="border-color:var(--c-rose)">
+              <h5>4. Risks &amp; Mitigations</h5>
+              <p>Compute budget limits → Use efficient attack proxies. Evolving attack surface → Weekly literature refresh.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Literature Stats Mock -->
+      <div class="demo-card">
+        <div class="demo-card-header">
+          <h4>Literature Stats</h4>
+          <span class="badge badge-sky">Literature</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="mock-lit-grid">
+            <div class="mock-lit-stat">
+              <div class="mock-lit-num">1,847</div>
+              <div class="mock-lit-label">Total Papers</div>
+            </div>
+            <div class="mock-lit-stat">
+              <div class="mock-lit-num">342</div>
+              <div class="mock-lit-label">Tagged</div>
+            </div>
+            <div class="mock-lit-stat">
+              <div class="mock-lit-num">89</div>
+              <div class="mock-lit-label">With Notes</div>
+            </div>
+            <div class="mock-lit-stat">
+              <div class="mock-lit-num">5</div>
+              <div class="mock-lit-label">CSV Sources</div>
+            </div>
+          </div>
+          <div style="margin-top:14px;padding:10px 14px;background:var(--c-surface-alt);border-radius:var(--radius-md);display:flex;align-items:center;gap:8px;font-size:12px">
+            <span class="badge badge-amber">Zotero</span>
+            <span class="badge badge-accent">Undermind</span>
+            <span style="color:var(--c-text-muted);margin-left:auto">Auto-detect format</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reports Mock -->
+      <div class="demo-card">
+        <div class="demo-card-header">
+          <h4>Reports</h4>
+          <span class="badge badge-amber">Reports Page</span>
+        </div>
+        <div class="demo-card-body">
+          <div class="mock-report">
+            <div class="mock-report-item">
+              <span class="mock-report-date">2025-03-04</span>
+              <span class="mock-report-title">Daily Report</span>
+              <span class="badge badge-emerald" style="margin-left:auto">Generated</span>
+            </div>
+            <div class="mock-report-item">
+              <span class="mock-report-date">2025-03-03</span>
+              <span class="mock-report-title">Daily Report</span>
+              <span class="badge badge-emerald" style="margin-left:auto">Generated</span>
+            </div>
+            <div class="mock-report-item">
+              <span class="mock-report-date">2025-W09</span>
+              <span class="mock-report-title">Weekly Report</span>
+              <span class="badge badge-accent" style="margin-left:auto">Generated</span>
+            </div>
+            <div class="mock-report-item" style="opacity:0.5">
+              <span class="mock-report-date">2025-03-02</span>
+              <span class="mock-report-title">Daily Report</span>
+              <span class="badge badge-sky" style="margin-left:auto">Pending</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     DOCS + FAQ
+     ════════════════════════════════════════════════════════ -->
+<section class="section section-alt" id="docs">
+  <div class="container">
+    <div class="section-header">
+      <h2>Documentation</h2>
+      <p>Resources to get you started and go deeper.</p>
+    </div>
+
+    <div class="docs-links">
+      <a href="#" class="doc-link" id="link-readme">
+        <span class="doc-link-icon">📖</span>
+        <span class="doc-link-title">README</span>
+        <span class="doc-link-desc">Setup, architecture, API reference</span>
+      </a>
+      <a href="#" class="doc-link" id="link-devguide">
+        <span class="doc-link-icon">🛠</span>
+        <span class="doc-link-title">Dev Guide</span>
+        <span class="doc-link-desc">Backend/frontend architecture, patterns</span>
+      </a>
+      <a href="#" class="doc-link" id="link-template">
+        <span class="doc-link-icon">📋</span>
+        <span class="doc-link-title">Template</span>
+        <span class="doc-link-desc">Download YAML project template</span>
+      </a>
+      <a href="#" class="doc-link" id="link-csv">
+        <span class="doc-link-icon">📊</span>
+        <span class="doc-link-title">CSV Formats</span>
+        <span class="doc-link-desc">Undermind &amp; Zotero import specs</span>
+      </a>
+    </div>
+
+    <!-- FAQ -->
+    <div class="section-header" style="margin-bottom:32px">
+      <h2 style="font-size:24px">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What is Resonance?</div>
+        <div class="faq-a">Resonance is an open-source research project management dashboard designed for the "Vibe Coding + Vibe Research" workflow. It combines portfolio tracking, literature management, AI-assisted planning, execution step tracking, timeline/kanban boards, and report generation into a single self-hosted application.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What tech stack does it use?</div>
+        <div class="faq-a">The backend is Python 3.11+ with FastAPI and Pydantic V2. The frontend is React 18 + TypeScript + Vite + TailwindCSS v4 with React Query for data fetching. Data is stored as flat YAML/JSON/Markdown files — no database required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How does the AI template workflow work?</div>
+        <div class="faq-a">Download a YAML template from any project page. Paste it into GPT-4, Gemini, Claude, or any LLM and ask it to fill all sections. Save the output as JSON, then upload it. The system auto-generates a structured overview, experiment and paper plans, VC/VR execution steps, milestones, and kanban items.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What literature CSV formats are supported?</div>
+        <div class="faq-a">Both Undermind and Zotero CSV exports are supported. The importer auto-detects the format from column headers (Zotero markers: Key, Item Type, Abstract Note; Undermind markers: Relevance Summary, Topic Match Score). You can also manually select the format from a dropdown.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I need a database?</div>
+        <div class="faq-a">No. All data is stored as flat files (YAML, JSON, Markdown, JSONL) in the project directory. This makes it easy to back up, version-control, and inspect your data with standard tools. The backend uses atomic file writes to prevent corruption.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I self-host it?</div>
+        <div class="faq-a">Yes — Resonance is designed to be self-hosted. Clone the repo, install Python and Node dependencies, build the frontend, and run the FastAPI server. It works on any Linux/macOS machine with Python 3.11+ and Node.js 20+.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What AI providers are supported?</div>
+        <div class="faq-a">The settings page supports configuring multiple AI providers including OpenAI, Anthropic, Google (Gemini), and MiniMax. Each provider has its own API key, base URL, and model list. The AI template workflow works with any LLM — you fill the template externally and upload the result.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How are reports generated?</div>
+        <div class="faq-a">Daily and weekly reports are generated from real stored data: checklist progress changes, punch-in log entries, artifact additions, literature imports, and timeline milestone status updates. Reports are saved as Markdown files and viewable from the Reports page with a built-in reader.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <p>
+      <strong>Resonance</strong> — Research Execution Cockpit<br>
+      Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+      Built with <a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a> + <a href="https://react.dev/" target="_blank">React</a> + <a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a>.<br>
+      <a href="#" id="footer-github">GitHub</a> · <a href="#top">Back to top</a>
+    </p>
+  </div>
+</footer>
+
+<!-- Screenshots placeholder: place images in /page_site/screenshots/ -->
+<!-- Reference them as: <img src="screenshots/dashboard.png" alt="Dashboard"> -->
+
+</body>
+</html>

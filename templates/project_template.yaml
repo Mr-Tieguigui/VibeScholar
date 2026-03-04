@@ -1,0 +1,46 @@
+schema_version: "1.0"
+project:
+  id: "project-id"
+  name: "Project Name"
+  tags:
+    - "tag1"
+    - "tag2"
+  priority: "P1"
+
+overview:
+  definition: "A concise 1-2 sentence definition of the project."
+  motivation: "Why is this project important?"
+  scope: "What is in scope and out of scope?"
+  questions:
+    - "Key question 1?"
+    - "Key question 2?"
+  concepts:
+    - "Concept 1: description"
+  pipeline:
+    - "Step 1"
+    - "Step 2"
+  evaluation: "How will success be measured?"
+  deliverables:
+    - "Deliverable 1"
+  risks:
+    - "Risk 1: Mitigation 1"
+  literature:
+    - "Key paper or topic to explore"
+  next_actions:
+    - "First action to take"
+
+milestones:
+  - id: "m1"
+    title: "Initial Prototype"
+    status: "todo"
+    deadline: "2024-06-01"
+
+execution:
+  vibe_coding:
+    - title: "Setup environment"
+      status: "todo"
+      description: "Initialize repo and dependencies"
+  vibe_research:
+    - title: "Literature review"
+      status: "todo"
+      description: "Review top 5 papers on topic"

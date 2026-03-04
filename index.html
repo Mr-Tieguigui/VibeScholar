@@ -1,345 +1,447 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LabPilot — Literature-to-Execution Workspace</title>
-  <meta name="description"
-    content="LabPilot is a self-hosted research workspace. Import literature from Undermind or Zotero, manage Vibe Coding & Vibe Research execution, generate reports — no API keys required.">
-  <meta name="keywords"
-    content="research management, vibe coding, vibe research, literature manager, project dashboard, Undermind, Zotero">
-  <meta property="og:title" content="LabPilot — Literature-to-Execution Workspace">
-  <meta property="og:description"
-    content="From papers to artifacts — one disciplined workflow. Self-hosted, API-key-free research project management.">
+  <title>VibeCR Monitor — Research Ops for High-Throughput Researchers</title>
+  <meta name="description" content="Personal research ops and work monitoring for individuals with heavy research workloads. Manage projects, papers, tasks, and reports locally.">
+  <meta name="keywords" content="research management, vibe coding, vibe research, literature manager, project dashboard, work monitoring">
+  <meta property="og:title" content="VibeCR Monitor — Research Ops">
+  <meta property="og:description" content="Personal research ops and work monitoring for individuals with heavy research workloads.">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="assets/styles.css">
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <script src="assets/app.js" defer></script>
 </head>
-
 <body>
+<div class="page-wrapper">
 
-  <!-- ═══ TOC (desktop sidebar) ═══════════════════════════ -->
-  <aside class="toc" aria-label="On this page">
-    <div class="toc-label">On this page</div>
-    <a href="#quickstart">Quickstart</a>
-    <a href="#demo">Demo Projects</a>
-    <a href="#literature">Literature</a>
-    <a href="#features">Features</a>
-    <a href="#docs">Docs</a>
-    <a href="#faq">FAQ</a>
-  </aside>
-
-  <!-- ═══ NAVIGATION ══════════════════════════════════════ -->
-  <nav class="nav" id="top" aria-label="Main navigation">
-    <div class="container nav-inner">
-      <a href="#top" class="nav-brand">
-        <span class="nav-mark" aria-hidden="true">LP</span>
-        <span class="nav-wordmark brand-name">LabPilot</span>
-        <span class="nav-sub brand-subtitle">Literature-to-Execution Workspace</span>
-      </a>
-      <button class="nav-mobile-toggle" aria-label="Toggle menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="#quickstart">Quickstart</a></li>
-        <li><a href="#demo">Demo</a></li>
-        <li><a href="#literature">Literature</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#docs">Docs</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="https://github.com/Mr-Tieguigui/vibeCR" class="nav-github github-link" target="_blank"
-            rel="noopener">GitHub ↗</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ═══ HERO ════════════════════════════════════════════ -->
-  <section class="hero section" id="hero">
-    <div class="container">
-      <div class="hero-badge">
-        <span class="badge badge-accent">Open-Source · Self-Hosted · API-Key-Free</span>
+<!-- ═══ NAVIGATION ══════════════════════════════════════ -->
+<nav class="nav" id="top" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-brand">
+      <img src="assets/icon.svg" class="nav-icon" alt="VibeCR Logo" width="28" height="28">
+      <div class="nav-wordmark">
+        <span class="vibe">VibeCR</span><span class="monitor">Monitor</span>
       </div>
-      <h1 class="animate-in" id="hero-title">LabPilot</h1>
-      <p class="hero-tagline animate-in delay-1" id="hero-tagline">
-        From papers to artifacts — one disciplined workflow.
-      </p>
-      <p class="hero-description animate-in delay-2" id="hero-description">
-        Manage your entire research portfolio from a single dashboard. Import literature from Undermind or Zotero, track
-        Vibe Coding &amp; Vibe Research execution steps, generate daily and weekly reports — all with local web AI
-        assistance, no API keys required.
-      </p>
-      <div class="hero-ctas animate-in delay-3">
-        <a href="#quickstart" class="btn btn-primary">Get Started</a>
-        <a href="#docs" class="btn btn-secondary">View Docs</a>
-      </div>
-    </div>
-  </section>
+    </a>
+    <button class="nav-mobile-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links">
+      <li><a href="#quickstart">Quickstart</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#literature">Literature</a></li>
+      <li><a href="#coding-stack">Coding Stack</a></li>
+      <li><a href="#research-stack">Research Stack</a></li>
+      <li><a href="https://github.com/Mr-Tieguigui/vibeCR" class="nav-github" target="_blank" rel="noopener">GitHub ↗</a></li>
+    </ul>
+  </div>
+</nav>
 
-  <!-- ═══ STATS STRIP ═════════════════════════════════════ -->
-  <section class="stats" id="stats" aria-label="Project statistics">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number" id="stat-projects" data-target="24">24</div>
-          <div class="stat-label">Projects Tracked</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" id="stat-papers" data-target="1847">1,847</div>
-          <div class="stat-label">Papers Indexed</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" id="stat-steps" data-target="312">312</div>
-          <div class="stat-label">Execution Steps</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number" id="stat-reports" data-target="96">96</div>
-          <div class="stat-label">Reports Generated</div>
-        </div>
+<!-- ═══ HERO ════════════════════════════════════════════ -->
+<section class="hero section" id="hero">
+  <div class="hero-bg-blobs">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+  </div>
+  <div class="container">
+    <div class="hero-art-logo animate-in">
+      <img src="assets/icon.svg" class="hero-icon" alt="Logo">
+      <h1 class="hero-title">VibeCR Monitor</h1>
+      <div class="hero-subtitle">Personal Research Ops &amp; Work Monitoring</div>
+    </div>
+    
+    <p class="hero-pitch animate-in delay-1">
+      Built for <strong>high-throughput researchers</strong> handling many projects, papers, and tasks simultaneously. Import literature via <strong>Undermind</strong> or <strong>Zotero</strong>, execute disciplined <strong>Vibe Coding</strong> &amp; <strong>Vibe Research</strong> loops using <strong>local web AI</strong> (no API keys required), and generate automated progress reports.
+    </p>
+
+    <div class="hero-ctas animate-in delay-2">
+      <a href="#quickstart" class="btn btn-primary">Quickstart</a>
+      <a href="https://github.com/Mr-Tieguigui/vibeCR" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+
+    <div class="stats-strip animate-in delay-3">
+      <div class="stat-item">
+        <div class="stat-val">∞</div>
+        <div class="stat-label">Projects Tracked</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">10K+</div>
+        <div class="stat-label">Papers Indexed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">0</div>
+        <div class="stat-label">API Keys Required</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val">24/7</div>
+        <div class="stat-label">Local Work Monitoring</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ QUICKSTART ══════════════════════════════════════ -->
-  <section class="section" id="quickstart">
-    <div class="container">
-      <div class="section-header">
-        <h2>Quickstart</h2>
-        <p>Four steps from zero to a fully managed research project — LangSkills-density, zero fluff.</p>
-      </div>
+<hr class="section-separator">
 
-      <div class="qs-grid" id="qs-grid">
-        <!-- JS renders quickstart cards from config -->
-      </div>
+<!-- ═══ QUICKSTART ══════════════════════════════════════ -->
+<section class="section" id="quickstart">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge">01. Setup</div>
+      <h2>Quickstart</h2>
+      <p>Deploy locally and start tracking your research workflow in minutes.</p>
+    </div>
 
-      <!-- Templates sub-block -->
-      <div class="qs-templates reveal">
-        <h3>📋 Templates &amp; Formats</h3>
-        <p>LabPilot is entirely API-key-free. You use Gemini, ChatGPT, or Claude in your browser to fill templates —
-          then upload the result. No provider configuration ever needed.</p>
-        <div class="qs-template-items">
-          <div class="qs-template-item">
-            <h4>Project Template (YAML → JSON)</h4>
-            <p>12 structured sections: definition, motivation, scope, questions, concepts, pipeline, evaluation,
-              deliverables, milestones, risks, literature, next actions.</p>
+    <div class="qs-grid">
+      <!-- Card 1 -->
+      <div class="terminal-card reveal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
           </div>
-          <div class="qs-template-item">
-            <h4>Literature CSV Formats</h4>
-            <p>Undermind CSV (relevance scores, topic match) and Zotero CSV (Item Type, Abstract Note, DOI).
-              Auto-detected from column headers.</p>
+          <div class="terminal-title">install.sh</div>
+        </div>
+        <div class="terminal-body">
+          <span class="comment"># 1. Clone the repository</span><br>
+          <span class="prompt">$</span> git clone <span class="string">https://github.com/Mr-Tieguigui/vibeCR</span><br>
+          <span class="prompt">$</span> cd vibeCR<br><br>
+          <span class="comment"># 2. Install dependencies (Requires Python 3.11+ & Node 20+)</span><br>
+          <span class="prompt">$</span> pip install -r backend/requirements.txt<br>
+          <span class="prompt">$</span> npm install --prefix frontend
+        </div>
+        <div class="terminal-footer">Dependencies installed successfully</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="terminal-card reveal reveal-delay-1">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
           </div>
+          <div class="terminal-title">run.sh</div>
         </div>
+        <div class="terminal-body">
+          <span class="comment"># 1. Start the FastAPI backend</span><br>
+          <span class="prompt">$</span> uvicorn backend.app.main:app --port 8007<br><br>
+          <span class="comment"># 2. Start the React frontend</span><br>
+          <span class="prompt">$</span> npm run dev --prefix frontend<br><br>
+          <span class="comment"># Dashboard running at http://localhost:5179</span>
+        </div>
+        <div class="terminal-footer">Server running and UI ready</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="terminal-card reveal reveal-delay-2">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div>
+          </div>
+          <div class="terminal-title">workflow.sh</div>
+        </div>
+        <div class="terminal-body">
+          <span class="comment"># 1. Create a project using AI templates</span><br>
+          <span class="prompt">&gt;</span> Upload filled JSON template<br><br>
+          <span class="comment"># 2. Ingest literature</span><br>
+          <span class="prompt">&gt;</span> Upload Undermind/Zotero CSV<br><br>
+          <span class="comment"># 3. Track execution &amp; generate reports</span><br>
+          <span class="prompt">&gt;</span> Cycle tasks, log updates, export daily.md
+        </div>
+        <div class="terminal-footer">Workflow initialized</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ DEMO SHOWCASE ═══════════════════════════════════ -->
-  <section class="section section-alt" id="demo">
-    <div class="container">
-      <div class="section-header">
-        <h2>Demo Projects</h2>
-        <p>20 realistic research projects across diverse AI/ML domains. Filter, search, and expand to explore.</p>
-      </div>
+<hr class="section-separator">
 
-      <div class="demo-controls">
-        <input type="text" class="demo-search" id="demo-search" placeholder="Search projects…"
-          aria-label="Search demo projects">
-        <select class="demo-filter" id="demo-filter" aria-label="Filter by tag">
-          <option value="">All tags</option>
-        </select>
-        <span class="demo-count" id="demo-count"></span>
-      </div>
-
-      <div class="demo-grid" id="demo-grid">
-        <!-- JS renders demo cards from demo-data.json -->
-      </div>
+<!-- ═══ TEMPLATES ═══════════════════════════════════════ -->
+<section class="section" id="templates">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge">02. Assets</div>
+      <h2>Templates</h2>
+      <p>Standardized formats to bootstrap your projects without external API dependencies.</p>
     </div>
-  </section>
 
-  <!-- ═══ LITERATURE WORKFLOW ═════════════════════════════ -->
-  <section class="section" id="literature">
-    <div class="container">
-      <div class="section-header">
-        <h2>Literature Workflow</h2>
-        <p>Two sources, one unified pipeline. Undermind for AI-powered discovery, Zotero for curated libraries.</p>
-      </div>
-
-      <div class="lit-compare">
-        <div class="lit-panel reveal">
-          <h3>🔬 Undermind</h3>
-          <table>
-            <tr>
-              <th>Source</th>
-              <td>Cloud AI search (app.undermind.ai)</td>
-            </tr>
-            <tr>
-              <th>Best for</th>
-              <td>Discovering new papers on a research topic</td>
-            </tr>
-            <tr>
-              <th>Export</th>
-              <td>Download CSV from search results</td>
-            </tr>
-            <tr>
-              <th>Key fields</th>
-              <td>Relevance Summary, Topic Match Score, Abstract</td>
-            </tr>
-            <tr>
-              <th>Unique</th>
-              <td>AI relevance scoring and topic matching</td>
-            </tr>
-          </table>
-        </div>
-        <div class="lit-panel reveal reveal-delay-1">
-          <h3>📚 Zotero</h3>
-          <table>
-            <tr>
-              <th>Source</th>
-              <td>Local reference manager (zotero.org)</td>
-            </tr>
-            <tr>
-              <th>Best for</th>
-              <td>Managing a curated personal library</td>
-            </tr>
-            <tr>
-              <th>Export</th>
-              <td>Select items → Export → CSV</td>
-            </tr>
-            <tr>
-              <th>Key fields</th>
-              <td>Item Type, Abstract Note, DOI, Date Added</td>
-            </tr>
-            <tr>
-              <th>Unique</th>
-              <td>Rich metadata, notes, and PDF annotations</td>
-            </tr>
-          </table>
+    <div class="templates-grid">
+      <div class="card reveal">
+        <h3>Project Template</h3>
+        <p>A YAML schema for bootstrapping new projects. Download it, ask any local or web LLM (ChatGPT/Claude/Gemini) to fill it out, and upload the generated JSON.</p>
+        <ul>
+          <li>Project Definition &amp; Scope</li>
+          <li>Pipeline &amp; Evaluation</li>
+          <li>Milestones &amp; Deadlines</li>
+          <li>Vibe Coding / Vibe Research Steps</li>
+        </ul>
+        <div class="template-dl-group">
+          <a href="templates/project_template.yaml" download class="btn btn-primary">Download YAML</a>
         </div>
       </div>
 
-      <div class="lit-data-model reveal">
-        <h3>📄 Unified Paper Data Model</h3>
-        <pre>{
-  "title":     "Attention Is All You Need",
-  "authors":   "Vaswani et al.",
-  "year":      2017,
-  "venue":     "NeurIPS",
-  "citations": 98423,
-  "url":       "https://arxiv.org/abs/1706.03762",
-  "abstract":  "We propose a new simple network architecture...",
-  "tags":      ["transformers", "attention", "NLP"],
-  "projects":  ["paper-reading-agent", "survey-automation"]
-}</pre>
-      </div>
-
-      <p class="lit-why reveal">
-        <strong>Why both?</strong> Undermind excels at AI-powered paper discovery — finding relevant work you didn't
-        know existed. Zotero excels at organizing papers you've already found. Use Undermind to explore, Zotero to
-        curate, and LabPilot to connect both to your execution pipeline.
-      </p>
-    </div>
-  </section>
-
-  <!-- ═══ FEATURES ════════════════════════════════════════ -->
-  <section class="section section-alt" id="features">
-    <div class="container">
-      <div class="section-header">
-        <h2>Features</h2>
-        <p>Everything you need to manage research projects end-to-end.</p>
-      </div>
-
-      <div id="features-container">
-        <!-- JS renders feature clusters from config -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ DOCS ════════════════════════════════════════════ -->
-  <section class="section" id="docs">
-    <div class="container">
-      <div class="section-header">
-        <h2>Documentation</h2>
-        <p>Core concepts, daily workflow, and local AI usage — condensed.</p>
-      </div>
-
-      <div class="docs-grid">
-        <div class="docs-block reveal">
-          <h3>🗂 Core Objects</h3>
-          <ul>
-            <li><strong>Project</strong> — research initiative with overview, steps, timeline, and artifacts</li>
-            <li><strong>Paper</strong> — literature entry with metadata, tags, notes, and project links</li>
-            <li><strong>Step</strong> — execution task with status cycling (todo → doing → done → blocked)</li>
-            <li><strong>Artifact</strong> — deliverable: code repo, dataset, paper draft, demo, or report</li>
-            <li><strong>Report</strong> — auto-generated daily/weekly markdown summary from project data</li>
-          </ul>
-        </div>
-
-        <div class="docs-block reveal reveal-delay-1">
-          <h3>📅 Daily Workflow</h3>
-          <ul>
-            <li>Open dashboard → check active step statuses and blockers</li>
-            <li>Cycle step status as you work (<code>todo → doing → done</code>)</li>
-            <li>Log progress with timestamped punch-in entries</li>
-            <li>Import new papers from Undermind/Zotero as discovered</li>
-            <li>Generate daily report to capture the day's progress</li>
-          </ul>
-        </div>
-
-        <div class="docs-block reveal reveal-delay-2">
-          <h3>📈 Weekly Workflow</h3>
-          <ul>
-            <li>Review portfolio dashboard for RAG status and blocker trends</li>
-            <li>Update milestone statuses and kanban board positions</li>
-            <li>Tag and annotate papers accumulated during the week</li>
-            <li>Register new artifacts (code, data, drafts) to the artifact index</li>
-            <li>Generate weekly report with portfolio-level progress metrics</li>
-          </ul>
-        </div>
-
-        <div class="docs-block reveal reveal-delay-3">
-          <h3>🤖 Local Web AI Usage</h3>
-          <ul>
-            <li>Download the YAML template from any project page</li>
-            <li>Paste into browser-based AI (ChatGPT, Gemini, Claude) and ask it to fill all sections</li>
-            <li>Save the output as JSON, upload via the "Upload Filled Template" button</li>
-            <li><strong>No API keys, no provider config, no server-side AI calls</strong></li>
-            <li>All AI interaction happens in your browser — LabPilot only processes the structured result</li>
-          </ul>
+      <div class="card reveal reveal-delay-1">
+        <h3>Literature CSV Formats</h3>
+        <p>Example CSV exports. VibeCR auto-detects these formats to ingest literature, complete with relevance scores or abstract notes.</p>
+        <ul>
+          <li><strong>Undermind:</strong> Title, Authors, Venue, Relevance Summary, Topic Match</li>
+          <li><strong>Zotero:</strong> Title, Author, Abstract Note, DOI, Date Added</li>
+        </ul>
+        <div class="template-dl-group">
+          <a href="templates/undermind_template.csv" download class="btn btn-secondary">Download Undermind CSV</a>
+          <a href="templates/zotero_template.csv" download class="btn btn-secondary">Download Zotero CSV</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ FAQ ═════════════════════════════════════════════ -->
-  <section class="section section-alt" id="faq">
-    <div class="container">
-      <div class="section-header">
-        <h2>Frequently Asked Questions</h2>
+<!-- ═══ DEMO MARQUEE ════════════════════════════════════ -->
+<div class="marquee-container" id="demo">
+  <div class="marquee-track" id="marquee-track">
+    <!-- JS populates generic demo items here -->
+  </div>
+</div>
+
+<!-- ═══ LITERATURE WORKFLOW ═════════════════════════════ -->
+<section class="section" id="literature">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge">03. Ingestion</div>
+      <h2>Literature Workflow</h2>
+      <p>Dual-source ingestion: discover with AI, organize locally, and track it all in one place.</p>
+    </div>
+
+    <div class="lit-panel reveal">
+      <div class="lit-col">
+        <h3><span style="color:var(--accent)">⬡</span> Undermind (Cloud)</h3>
+        <p class="lit-col-desc">Best for discovering new, highly relevant papers using AI deep search.</p>
+        <ul class="lit-steps">
+          <li>Search a topic on app.undermind.ai</li>
+          <li>Review the generated report</li>
+          <li>Download the search results as CSV</li>
+        </ul>
+        <div class="lit-chips">
+          <span class="lit-chip">Relevance Summary</span>
+          <span class="lit-chip">Topic Match Score</span>
+          <span class="lit-chip">Abstract</span>
+        </div>
       </div>
-      <div class="faq-list" id="faq-list">
-        <!-- JS renders FAQ from config -->
+      <div class="lit-col">
+        <h3><span style="color:var(--accent2)">📚</span> Zotero (Local)</h3>
+        <p class="lit-col-desc">Best for managing a curated, long-term personal reference library.</p>
+        <ul class="lit-steps">
+          <li>Organize papers in Zotero collections</li>
+          <li>Add notes and PDF annotations</li>
+          <li>Select items → Export as CSV</li>
+        </ul>
+        <div class="lit-chips">
+          <span class="lit-chip">Item Type</span>
+          <span class="lit-chip">Abstract Note</span>
+          <span class="lit-chip">Date Added</span>
+          <span class="lit-chip">DOI</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ═══ FOOTER ══════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <p>
-        <strong class="brand-name">LabPilot</strong> — <span class="brand-subtitle">Literature-to-Execution
-          Workspace</span><br>
-        Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA
-          4.0</a>.
-        Built with <a href="https://fastapi.tiangolo.com/" target="_blank" rel="noopener">FastAPI</a> + <a
-          href="https://react.dev/" target="_blank" rel="noopener">React</a> + <a href="https://tailwindcss.com/"
-          target="_blank" rel="noopener">TailwindCSS</a>.<br>
-        <a href="https://github.com/Mr-Tieguigui/vibeCR" class="github-link" target="_blank" rel="noopener">GitHub</a> ·
-        <a href="#top">Back to top</a>
-      </p>
+    <div class="lit-pipeline reveal reveal-delay-1">
+      <span class="lit-pipe-step">Export CSV</span>
+      <span class="lit-pipe-arrow">→</span>
+      <span class="lit-pipe-step">Import to VibeCR</span>
+      <span class="lit-pipe-arrow">→</span>
+      <span class="lit-pipe-step">Tag &amp; Annotate</span>
+      <span class="lit-pipe-arrow">→</span>
+      <span class="lit-pipe-step">Link to Projects</span>
+      <span class="lit-pipe-arrow">→</span>
+      <span class="lit-pipe-step">Weekly Reports</span>
     </div>
-  </footer>
+  </div>
+</section>
 
+<hr class="section-separator">
+
+<!-- ═══ CODING STACK ════════════════════════════════════ -->
+<section class="section" id="coding-stack">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge">04. Execution</div>
+      <h2>Vibe Coding Stack (Examples)</h2>
+      <p>Recommended open-source tools and patterns for high-velocity implementation.</p>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-card reveal">
+        <h3>Code Agents &amp; IDEs</h3>
+        <ul class="stack-list">
+          <li>
+            <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="stack-link">VS Code</a>
+            <span class="stack-desc">Standard extensible editor for custom tooling.</span>
+          </li>
+          <li>
+            <a href="https://cursor.com/" target="_blank" rel="noopener" class="stack-link">Cursor</a>
+            <span class="stack-desc">AI-first IDE with strong codebase indexing.</span>
+          </li>
+          <li>
+            <a href="https://codeium.com/windsurf" target="_blank" rel="noopener" class="stack-link">Windsurf</a>
+            <span class="stack-desc">Next-gen agentic IDE with Cascade.</span>
+          </li>
+          <li>
+            <a href="https://github.com/paul-gauthier/aider" target="_blank" rel="noopener" class="stack-link">Aider (CLI)</a>
+            <span class="stack-desc">AI pair programming in your terminal.</span>
+          </li>
+          <li>
+            <a href="https://github.com/OpenDevin/OpenDevin" target="_blank" rel="noopener" class="stack-link">OpenDevin</a>
+            <span class="stack-desc">Open-source autonomous AI software engineer.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="stack-card reveal reveal-delay-1">
+        <h3>Build &amp; Tooling</h3>
+        <ul class="stack-list">
+          <li>
+            <a href="https://github.com/astral-sh/uv" target="_blank" rel="noopener" class="stack-link">uv</a>
+            <span class="stack-desc">Extremely fast Python package installer and resolver.</span>
+          </li>
+          <li>
+            <a href="https://github.com/astral-sh/ruff" target="_blank" rel="noopener" class="stack-link">Ruff</a>
+            <span class="stack-desc">An extremely fast Python linter, written in Rust.</span>
+          </li>
+          <li>
+            <a href="https://github.com/pre-commit/pre-commit" target="_blank" rel="noopener" class="stack-link">pre-commit</a>
+            <span class="stack-desc">A framework for managing and maintaining multi-language pre-commit hooks.</span>
+          </li>
+          <li>
+            <a href="https://github.com/pydantic/pydantic" target="_blank" rel="noopener" class="stack-link">Pydantic</a>
+            <span class="stack-desc">Data validation using Python type hints.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="stack-card reveal" style="grid-column: 1 / -1;">
+        <h3>Prompt Patterns</h3>
+        <p class="stack-desc" style="margin-bottom: 8px;">Effective Vibe Coding relies on structured prompting.</p>
+        <div class="prompt-box">System: You are an expert engineer. I will provide a task.
+1. Outline the files to be modified.
+2. Provide a step-by-step implementation plan.
+3. Wait for my approval before writing code.
+Once approved, output complete files without omitting code for brevity.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESEARCH STACK ══════════════════════════════════ -->
+<section class="section" id="research-stack">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-badge">05. Intelligence</div>
+      <h2>Vibe Research Stack (Examples)</h2>
+      <p>Curated tools for literature ingestion, synthesis, and writing.</p>
+    </div>
+
+    <div class="stack-grid">
+      <div class="stack-card reveal">
+        <h3>Literature &amp; PDF Extraction</h3>
+        <ul class="stack-list">
+          <li>
+            <a href="https://www.zotero.org/" target="_blank" rel="noopener" class="stack-link">Zotero</a>
+            <span class="stack-desc">Open-source local reference management.</span>
+          </li>
+          <li>
+            <a href="https://github.com/retorquere/zotero-better-bibtex" target="_blank" rel="noopener" class="stack-link">Better BibTeX</a>
+            <span class="stack-desc">Essential plugin for Zotero citation key management.</span>
+          </li>
+          <li>
+            <a href="https://github.com/kermitt2/grobid" target="_blank" rel="noopener" class="stack-link">GROBID</a>
+            <span class="stack-desc">Machine learning software for extracting information from scholarly documents.</span>
+          </li>
+          <li>
+            <a href="https://github.com/allenai/nougat" target="_blank" rel="noopener" class="stack-link">Nougat</a>
+            <span class="stack-desc">Neural Optical Understanding for Academic Documents.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="stack-card reveal reveal-delay-1">
+        <h3>Knowledge &amp; Writing</h3>
+        <ul class="stack-list">
+          <li>
+            <a href="https://obsidian.md/" target="_blank" rel="noopener" class="stack-link">Obsidian</a>
+            <span class="stack-desc">Local, markdown-based personal knowledge base.</span>
+          </li>
+          <li>
+            <a href="https://github.com/plk/biblatex" target="_blank" rel="noopener" class="stack-link">BibLaTeX</a>
+            <span class="stack-desc">Sophisticated bibliography processing for LaTeX.</span>
+          </li>
+          <li>
+            <a href="https://github.com/jgm/pandoc" target="_blank" rel="noopener" class="stack-link">Pandoc</a>
+            <span class="stack-desc">Universal document converter (Markdown to PDF/LaTeX).</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="stack-card reveal" style="grid-column: 1 / -1;">
+        <h3>Prompt Patterns</h3>
+        <p class="stack-desc" style="margin-bottom: 8px;">For synthesizing literature and writing.</p>
+        <div class="prompt-box">Task: Literature Triage
+Input: [Abstract Text]
+Output JSON format:
+- core_contribution (1 sentence)
+- relevance_to_my_project (high/med/low)
+- key_techniques (list)
+- should_read_full_paper (boolean)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-separator">
+
+<!-- ═══ FAQ ═════════════════════════════════════════════ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-header reveal" style="align-items: center; text-align: center;">
+      <div class="section-badge">06. Details</div>
+      <h2>FAQ</h2>
+    </div>
+    
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">What is "Vibe Coding"?</div>
+        <div class="faq-a">A workflow where you direct an AI agent (like Cascade or Aider) to write code, while you focus on architecture, testing, and steering. It relies on tight feedback loops and rigorous tracking.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Do I need an OpenAI or Anthropic API key?</div>
+        <div class="faq-a">No. VibeCR Monitor uses no backend AI APIs. You fill out project templates locally using any web UI (ChatGPT, Claude, Gemini) and upload the resulting JSON.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Where is my data stored?</div>
+        <div class="faq-a">All your data is stored locally in plain text files (YAML, JSON, Markdown) inside the `projects/` directory. No database is required, making it perfect for Git version control.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">How does the literature importer work?</div>
+        <div class="faq-a">Export a CSV from Undermind or Zotero, and upload it via the VibeCR dashboard. The system auto-detects the source based on column headers and normalizes the data into a unified local index.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Can I self-host this on a remote server?</div>
+        <div class="faq-a">Yes. It's standard FastAPI + React. You can run it on a VPS and access it via the web, but it's designed primarily as a local desktop service.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <p>
+      <strong>VibeCR Monitor</strong> — Personal Research Ops<br>
+      Licensed under CC BY-SA 4.0. No telemetry, no cloud DB.<br><br>
+      <a href="https://github.com/Mr-Tieguigui/vibeCR" target="_blank" rel="noopener">GitHub</a> · 
+      <a href="#top">Back to top</a>
+    </p>
+  </div>
+</footer>
+
+</div> <!-- .page-wrapper -->
 </body>
-
 </html>

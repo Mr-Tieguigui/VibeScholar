@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LitPulse — Vibe Coding & Research Monitor</title>
-  <meta name="description" content="Personal research ops and work monitoring for high-throughput researchers. Manage projects, papers, tasks, and reports locally with no API keys.">
-  <meta name="keywords" content="research management, vibe coding, vibe research, literature monitor, project dashboard, work monitoring, LitPulse">
+  <meta name="description"
+    content="Personal research ops and work monitoring for high-throughput researchers. Manage projects, papers, tasks, and reports locally with no API keys.">
+  <meta name="keywords"
+    content="research management, vibe coding, vibe research, literature monitor, project dashboard, work monitoring, LitPulse">
   <meta property="og:title" content="LitPulse — Vibe Coding & Research Monitor">
   <meta property="og:description" content="Personal research ops and work monitoring for high-throughput researchers.">
   <meta property="og:type" content="website">
@@ -14,322 +17,446 @@
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <script src="assets/app.js" defer></script>
 </head>
+
 <body>
-<div class="page-wrapper">
+  <div class="page-wrapper">
 
-<!-- ═══ NAVIGATION ══════════════════════════════════════ -->
-<nav class="nav" id="top" aria-label="Main navigation">
-  <div class="container nav-inner">
-    <a href="#top" class="nav-brand">
-      <img src="assets/icon.svg" class="nav-icon" alt="LitPulse Logo" width="28" height="28">
-      <div class="nav-wordmark">
-        <span class="wm-lit">Lit</span><span class="wm-pulse">Pulse</span>
-      </div>
-    </a>
-    <button class="nav-mobile-toggle" aria-label="Toggle menu">☰</button>
-    <ul class="nav-links">
-      <li><a href="#quickstart">Quickstart</a></li>
-      <li><a href="#templates">Templates</a></li>
-      <li><a href="#demo">Demo</a></li>
-      <li><a href="#literature">Literature</a></li>
-      <li><a href="#coding-stack">Coding Stack</a></li>
-      <li><a href="#research-stack">Research Stack</a></li>
-      <li><a href="https://github.com/Mr-Tieguigui/vibeCR" class="nav-github" target="_blank" rel="noopener">GitHub ↗</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ═══ HERO ════════════════════════════════════════════ -->
-<section class="hero section" id="hero">
-  <div class="hero-bg-blobs">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-  </div>
-  <div class="container">
-    <div class="hero-art-logo animate-in">
-      <img src="assets/icon.svg" class="hero-icon" alt="LitPulse Logo" width="64" height="64">
-      <h1 class="hero-title">LitPulse</h1>
-      <div class="hero-subtitle">Vibe Coding &amp; Research Monitor</div>
-    </div>
-
-    <p class="hero-pitch animate-in delay-1">
-      Built for <strong>high-throughput researchers</strong> juggling many projects, papers, and tasks. Import literature via <strong>Undermind</strong> or <strong>Zotero</strong>, run disciplined <strong>Vibe Coding</strong> &amp; <strong>Vibe Research</strong> loops with <strong>local web AI</strong> (no API keys), and generate automated progress reports.
-    </p>
-
-    <div class="hero-ctas animate-in delay-2">
-      <a href="#quickstart" class="btn btn-primary">Quickstart</a>
-      <a href="https://github.com/Mr-Tieguigui/vibeCR" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
-    </div>
-
-    <div class="stats-strip animate-in delay-3">
-      <div class="stat-item"><div class="stat-val">&infin;</div><div class="stat-label">Projects</div></div>
-      <div class="stat-item"><div class="stat-val">10K+</div><div class="stat-label">Papers</div></div>
-      <div class="stat-item"><div class="stat-val">0</div><div class="stat-label">API Keys</div></div>
-      <div class="stat-item"><div class="stat-val">24/7</div><div class="stat-label">Monitoring</div></div>
-    </div>
-  </div>
-</section>
-
-<hr class="section-separator">
-
-<!-- ═══ QUICKSTART ══════════════════════════════════════ -->
-<section class="section" id="quickstart">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge">01 &middot; Setup</div>
-      <h2>Quickstart</h2>
-      <p>Deploy locally and start tracking your research workflow in minutes.</p>
-    </div>
-    <div class="qs-grid">
-      <div class="terminal-card reveal">
-        <div class="terminal-header"><div class="terminal-dots"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div></div><div class="terminal-title">install.sh</div></div>
-        <div class="terminal-body"><span class="comment"># Clone &amp; install</span><br><span class="prompt">$</span> git clone <span class="string">https://github.com/Mr-Tieguigui/vibeCR</span><br><span class="prompt">$</span> cd vibeCR<br><span class="prompt">$</span> pip install -r backend/requirements.txt<br><span class="prompt">$</span> npm install --prefix frontend</div>
-        <div class="terminal-footer">Dependencies installed</div>
-      </div>
-      <div class="terminal-card reveal reveal-delay-1">
-        <div class="terminal-header"><div class="terminal-dots"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div></div><div class="terminal-title">run.sh</div></div>
-        <div class="terminal-body"><span class="comment"># Start backend + frontend</span><br><span class="prompt">$</span> uvicorn backend.app.main:app --port 8007<br><span class="prompt">$</span> npm run dev --prefix frontend<br><span class="comment"># → http://localhost:5179</span></div>
-        <div class="terminal-footer">Server running</div>
-      </div>
-      <div class="terminal-card reveal reveal-delay-2">
-        <div class="terminal-header"><div class="terminal-dots"><div class="terminal-dot r"></div><div class="terminal-dot y"></div><div class="terminal-dot g"></div></div><div class="terminal-title">workflow.sh</div></div>
-        <div class="terminal-body"><span class="comment"># Daily workflow</span><br><span class="prompt">&gt;</span> Upload filled project JSON<br><span class="prompt">&gt;</span> Import Undermind / Zotero CSV<br><span class="prompt">&gt;</span> Cycle tasks, log updates<br><span class="prompt">&gt;</span> Export daily.md report</div>
-        <div class="terminal-footer">Workflow initialized</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="section-separator">
-
-<!-- ═══ TEMPLATES ═══════════════════════════════════════ -->
-<section class="section" id="templates">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge">02 &middot; Assets</div>
-      <h2>Templates</h2>
-      <p>Standardized formats to bootstrap projects — no external API dependencies.</p>
-    </div>
-    <div class="templates-grid">
-      <div class="card reveal">
-        <h3>Project Template</h3>
-        <p>A YAML schema for new projects. Download, fill with any web LLM, upload the JSON.</p>
-        <ul>
-          <li>Project Definition &amp; Scope</li>
-          <li>Pipeline &amp; Evaluation</li>
-          <li>Milestones &amp; Deadlines</li>
-          <li>Vibe Coding / Vibe Research Steps</li>
+    <!-- ═══ NAVIGATION ══════════════════════════════════════ -->
+    <nav class="nav" id="top" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="#top" class="nav-brand">
+          <img src="assets/icon.svg" class="nav-icon" alt="LitPulse Logo" width="28" height="28">
+          <div class="nav-wordmark">
+            <span class="wm-lit">Lit</span><span class="wm-pulse">Pulse</span>
+          </div>
+        </a>
+        <button class="nav-mobile-toggle" aria-label="Toggle menu">☰</button>
+        <ul class="nav-links">
+          <li><a href="#quickstart">Quickstart</a></li>
+          <li><a href="#templates">Templates</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#literature">Literature</a></li>
+          <li><a href="#coding-stack">Coding Stack</a></li>
+          <li><a href="#research-stack">Research Stack</a></li>
+          <li><a href="https://github.com/Mr-Tieguigui/vibeCR" class="nav-github" target="_blank" rel="noopener">GitHub
+              ↗</a></li>
         </ul>
-        <div class="template-dl-group">
-          <a href="templates/project_template.yaml" download class="btn btn-primary">Download YAML</a>
+      </div>
+    </nav>
+
+    <!-- ═══ HERO ════════════════════════════════════════════ -->
+    <section class="hero section" id="hero">
+      <div class="hero-bg-blobs">
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+      </div>
+      <div class="container">
+        <div class="hero-art-logo animate-in">
+          <img src="assets/icon.svg" class="hero-icon" alt="LitPulse Logo" width="64" height="64">
+          <h1 class="hero-title">LitPulse</h1>
+          <div class="hero-subtitle">Vibe Coding &amp; Research Monitor</div>
+        </div>
+
+        <p class="hero-pitch animate-in delay-1">
+          Built for <strong>high-throughput researchers</strong> juggling many projects, papers, and tasks. Import
+          literature via <strong>Undermind</strong> or <strong>Zotero</strong>, run disciplined <strong>Vibe
+            Coding</strong> &amp; <strong>Vibe Research</strong> loops with <strong>local web AI</strong> (no API keys),
+          and generate automated progress reports.
+        </p>
+
+        <div class="hero-ctas animate-in delay-2">
+          <a href="#quickstart" class="btn btn-primary">Quickstart</a>
+          <a href="https://github.com/Mr-Tieguigui/vibeCR" class="btn btn-secondary" target="_blank" rel="noopener">View
+            on GitHub</a>
+        </div>
+
+        <div class="stats-strip animate-in delay-3">
+          <div class="stat-item">
+            <div class="stat-val">&infin;</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">10K+</div>
+            <div class="stat-label">Papers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">0</div>
+            <div class="stat-label">API Keys</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">24/7</div>
+            <div class="stat-label">Monitoring</div>
+          </div>
         </div>
       </div>
-      <div class="card reveal reveal-delay-1">
-        <h3>Literature CSV Formats</h3>
-        <p>Example CSV exports. LitPulse auto-detects formats from column headers.</p>
-        <ul>
-          <li><strong>Undermind:</strong> Title, Authors, Venue, Relevance, Topic Match</li>
-          <li><strong>Zotero:</strong> Title, Author, Abstract Note, DOI, Date Added</li>
-        </ul>
-        <div class="template-dl-group">
-          <a href="templates/undermind_template.csv" download class="btn btn-secondary">Undermind CSV</a>
-          <a href="templates/zotero_template.csv" download class="btn btn-secondary">Zotero CSV</a>
+    </section>
+
+    <!-- ═══ WORKFLOW PIPELINE ANIMATION ═════════════════════ -->
+    <div class="workflow-pipeline" id="workflow">
+      <div class="workflow-track" id="wf-track">
+        <div class="wf-node" data-wf="0">
+          <div class="wf-node-icon">📋</div>
+          <div class="wf-node-label">Fill Template</div>
+        </div>
+        <div class="wf-arrow"></div>
+        <div class="wf-node" data-wf="1">
+          <div class="wf-node-icon">📥</div>
+          <div class="wf-node-label">Import JSON</div>
+        </div>
+        <div class="wf-arrow"></div>
+        <div class="wf-node" data-wf="2">
+          <div class="wf-node-icon">⚡</div>
+          <div class="wf-node-label">Vibe Coding</div>
+        </div>
+        <div class="wf-arrow"></div>
+        <div class="wf-node" data-wf="3">
+          <div class="wf-node-icon">🔬</div>
+          <div class="wf-node-label">Vibe Research</div>
+        </div>
+        <div class="wf-arrow"></div>
+        <div class="wf-node" data-wf="4">
+          <div class="wf-node-icon">📊</div>
+          <div class="wf-node-label">Track &amp; Report</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<hr class="section-separator">
+    <hr class="section-separator">
 
-<!-- ═══ DEMO PROJECTS ══════════════════════════════════ -->
-<section class="section" id="demo">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge">03 &middot; Showcase</div>
-      <h2>Demo Projects</h2>
-      <p>60 generic example projects across 16 research domains. All data is synthetic — no private info.</p>
-    </div>
-
-    <div class="demo-frame reveal">
-      <div class="demo-controls">
-        <input type="text" class="demo-search" id="demo-search" placeholder="Search projects…" aria-label="Search demo projects">
-        <select class="demo-filter" id="demo-filter" aria-label="Filter by domain">
-          <option value="">All domains</option>
-        </select>
-        <button class="btn btn-secondary demo-reset" id="demo-reset">Reset</button>
-        <span class="demo-count" id="demo-count"></span>
-      </div>
-      <div class="demo-ticker" id="demo-ticker">
-        <div class="demo-track" id="demo-track"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="section-separator">
-
-<!-- ═══ LITERATURE WORKFLOW ═════════════════════════════ -->
-<section class="section" id="literature">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge">04 &middot; Ingestion</div>
-      <h2>Literature Workflow</h2>
-      <p>Dual-source ingestion: discover with AI, organize locally, track it all.</p>
-    </div>
-    <div class="lit-panel reveal">
-      <div class="lit-col">
-        <h3><span style="color:var(--accent)">⬡</span> Undermind (Cloud)</h3>
-        <p class="lit-col-desc">Discover new, highly relevant papers via AI deep search.</p>
-        <ul class="lit-steps">
-          <li>Search a topic on app.undermind.ai</li>
-          <li>Review the generated report</li>
-          <li>Download search results as CSV</li>
-        </ul>
-        <div class="lit-chips">
-          <span class="lit-chip">Relevance Summary</span>
-          <span class="lit-chip">Topic Match Score</span>
-          <span class="lit-chip">Abstract</span>
+    <!-- ═══ QUICKSTART ══════════════════════════════════════ -->
+    <section class="section" id="quickstart">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">01 &middot; Setup</div>
+          <h2>Quickstart</h2>
+          <p>Deploy locally and start tracking your research workflow in minutes.</p>
+        </div>
+        <div class="qs-grid">
+          <div class="terminal-card reveal">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot r"></div>
+                <div class="terminal-dot y"></div>
+                <div class="terminal-dot g"></div>
+              </div>
+              <div class="terminal-title">install.sh</div>
+            </div>
+            <div class="terminal-body"><span class="comment"># Clone &amp; install</span><br><span
+                class="prompt">$</span> git clone <span
+                class="string">https://github.com/Mr-Tieguigui/vibeCR</span><br><span class="prompt">$</span> cd
+              vibeCR<br><span class="prompt">$</span> pip install -r backend/requirements.txt<br><span
+                class="prompt">$</span> npm install --prefix frontend</div>
+            <div class="terminal-footer">Dependencies installed</div>
+          </div>
+          <div class="terminal-card reveal reveal-delay-1">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot r"></div>
+                <div class="terminal-dot y"></div>
+                <div class="terminal-dot g"></div>
+              </div>
+              <div class="terminal-title">run.sh</div>
+            </div>
+            <div class="terminal-body"><span class="comment"># Start backend + frontend</span><br><span
+                class="prompt">$</span> uvicorn backend.app.main:app --port 8007<br><span class="prompt">$</span> npm
+              run dev --prefix frontend<br><span class="comment"># → http://localhost:5179</span></div>
+            <div class="terminal-footer">Server running</div>
+          </div>
+          <div class="terminal-card reveal reveal-delay-2">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot r"></div>
+                <div class="terminal-dot y"></div>
+                <div class="terminal-dot g"></div>
+              </div>
+              <div class="terminal-title">workflow.sh</div>
+            </div>
+            <div class="terminal-body"><span class="comment"># Daily workflow</span><br><span class="prompt">&gt;</span>
+              Upload filled project JSON<br><span class="prompt">&gt;</span> Import Undermind / Zotero CSV<br><span
+                class="prompt">&gt;</span> Cycle tasks, log updates<br><span class="prompt">&gt;</span> Export daily.md
+              report</div>
+            <div class="terminal-footer">Workflow initialized</div>
+          </div>
         </div>
       </div>
-      <div class="lit-col">
-        <h3><span style="color:var(--accent2)">📚</span> Zotero (Local)</h3>
-        <p class="lit-col-desc">Manage a curated, long-term personal reference library.</p>
-        <ul class="lit-steps">
-          <li>Organize papers in Zotero collections</li>
-          <li>Add notes and PDF annotations</li>
-          <li>Select items → Export as CSV</li>
-        </ul>
-        <div class="lit-chips">
-          <span class="lit-chip">Item Type</span>
-          <span class="lit-chip">Abstract Note</span>
-          <span class="lit-chip">Date Added</span>
-          <span class="lit-chip">DOI</span>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ═══ TEMPLATES ═══════════════════════════════════════ -->
+    <section class="section" id="templates">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">02 &middot; Assets</div>
+          <h2>Templates</h2>
+          <p>Standardized formats to bootstrap projects — no external API dependencies.</p>
+        </div>
+        <div class="templates-grid">
+          <div class="card reveal">
+            <h3>Project Template</h3>
+            <p>A YAML schema for new projects. Download, fill with any web LLM, upload the JSON.</p>
+            <ul>
+              <li>Project Definition &amp; Scope</li>
+              <li>Pipeline &amp; Evaluation</li>
+              <li>Milestones &amp; Deadlines</li>
+              <li>Vibe Coding / Vibe Research Steps</li>
+            </ul>
+            <div class="template-dl-group">
+              <a href="templates/project_template.yaml" download class="btn btn-primary">Download YAML</a>
+            </div>
+          </div>
+          <div class="card reveal reveal-delay-1">
+            <h3>Literature CSV Formats</h3>
+            <p>Example CSV exports. LitPulse auto-detects formats from column headers.</p>
+            <ul>
+              <li><strong>Undermind:</strong> Title, Authors, Venue, Relevance, Topic Match</li>
+              <li><strong>Zotero:</strong> Title, Author, Abstract Note, DOI, Date Added</li>
+            </ul>
+            <div class="template-dl-group">
+              <a href="templates/undermind_template.csv" download class="btn btn-secondary">Undermind CSV</a>
+              <a href="templates/zotero_template.csv" download class="btn btn-secondary">Zotero CSV</a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="lit-pipeline reveal reveal-delay-1">
-      <span class="lit-pipe-step">Export CSV</span><span class="lit-pipe-arrow">→</span>
-      <span class="lit-pipe-step">Import to LitPulse</span><span class="lit-pipe-arrow">→</span>
-      <span class="lit-pipe-step">Tag &amp; Annotate</span><span class="lit-pipe-arrow">→</span>
-      <span class="lit-pipe-step">Link to Projects</span><span class="lit-pipe-arrow">→</span>
-      <span class="lit-pipe-step">Weekly Reports</span>
-    </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ═══ DEMO PROJECTS ══════════════════════════════════ -->
+    <section class="section" id="demo">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">03 &middot; Showcase</div>
+          <h2>Demo Projects</h2>
+          <p>60 generic example projects across 16 research domains. All data is synthetic — no private info.</p>
+        </div>
+
+        <div class="demo-frame reveal">
+          <div class="demo-controls">
+            <input type="text" class="demo-search" id="demo-search" placeholder="Search projects…"
+              aria-label="Search demo projects">
+            <select class="demo-filter" id="demo-filter" aria-label="Filter by domain">
+              <option value="">All domains</option>
+            </select>
+            <button class="btn btn-secondary demo-reset" id="demo-reset">Reset</button>
+            <span class="demo-count" id="demo-count"></span>
+          </div>
+          <div class="demo-ticker" id="demo-ticker">
+            <div class="demo-track" id="demo-track"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ═══ LITERATURE WORKFLOW ═════════════════════════════ -->
+    <section class="section" id="literature">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">04 &middot; Ingestion</div>
+          <h2>Literature Workflow</h2>
+          <p>Dual-source ingestion: discover with AI, organize locally, track it all.</p>
+        </div>
+        <div class="lit-panel reveal">
+          <div class="lit-col">
+            <h3><span style="color:var(--accent)">⬡</span> Undermind (Cloud)</h3>
+            <p class="lit-col-desc">Discover new, highly relevant papers via AI deep search.</p>
+            <ul class="lit-steps">
+              <li>Search a topic on app.undermind.ai</li>
+              <li>Review the generated report</li>
+              <li>Download search results as CSV</li>
+            </ul>
+            <div class="lit-chips">
+              <span class="lit-chip">Relevance Summary</span>
+              <span class="lit-chip">Topic Match Score</span>
+              <span class="lit-chip">Abstract</span>
+            </div>
+          </div>
+          <div class="lit-col">
+            <h3><span style="color:var(--accent2)">📚</span> Zotero (Local)</h3>
+            <p class="lit-col-desc">Manage a curated, long-term personal reference library.</p>
+            <ul class="lit-steps">
+              <li>Organize papers in Zotero collections</li>
+              <li>Add notes and PDF annotations</li>
+              <li>Select items → Export as CSV</li>
+            </ul>
+            <div class="lit-chips">
+              <span class="lit-chip">Item Type</span>
+              <span class="lit-chip">Abstract Note</span>
+              <span class="lit-chip">Date Added</span>
+              <span class="lit-chip">DOI</span>
+            </div>
+          </div>
+        </div>
+        <div class="lit-pipeline reveal reveal-delay-1">
+          <span class="lit-pipe-step">Export CSV</span><span class="lit-pipe-arrow">→</span>
+          <span class="lit-pipe-step">Import to LitPulse</span><span class="lit-pipe-arrow">→</span>
+          <span class="lit-pipe-step">Tag &amp; Annotate</span><span class="lit-pipe-arrow">→</span>
+          <span class="lit-pipe-step">Link to Projects</span><span class="lit-pipe-arrow">→</span>
+          <span class="lit-pipe-step">Weekly Reports</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ═══ CODING STACK ════════════════════════════════════ -->
+    <section class="section" id="coding-stack">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">05 &middot; Execution</div>
+          <h2>Vibe Coding Stack</h2>
+          <p>Recommended open-source tools and patterns for high-velocity implementation.</p>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-card reveal">
+            <h3>Code Agents &amp; IDEs</h3>
+            <ul class="stack-list">
+              <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="stack-link">VS
+                  Code</a><span class="stack-desc">Extensible editor for custom tooling.</span></li>
+              <li><a href="https://cursor.com/" target="_blank" rel="noopener" class="stack-link">Cursor</a><span
+                  class="stack-desc">AI-first IDE with codebase indexing.</span></li>
+              <li><a href="https://codeium.com/windsurf" target="_blank" rel="noopener"
+                  class="stack-link">Windsurf</a><span class="stack-desc">Agentic IDE with Cascade.</span></li>
+              <li><a href="https://github.com/paul-gauthier/aider" target="_blank" rel="noopener"
+                  class="stack-link">Aider</a><span class="stack-desc">AI pair programming in terminal.</span></li>
+              <li><a href="https://github.com/OpenDevin/OpenDevin" target="_blank" rel="noopener"
+                  class="stack-link">OpenDevin</a><span class="stack-desc">Open-source AI software engineer.</span></li>
+            </ul>
+          </div>
+          <div class="stack-card reveal reveal-delay-1">
+            <h3>Build &amp; Tooling</h3>
+            <ul class="stack-list">
+              <li><a href="https://github.com/astral-sh/uv" target="_blank" rel="noopener"
+                  class="stack-link">uv</a><span class="stack-desc">Fast Python package installer.</span></li>
+              <li><a href="https://github.com/astral-sh/ruff" target="_blank" rel="noopener"
+                  class="stack-link">Ruff</a><span class="stack-desc">Fast Python linter in Rust.</span></li>
+              <li><a href="https://github.com/pre-commit/pre-commit" target="_blank" rel="noopener"
+                  class="stack-link">pre-commit</a><span class="stack-desc">Multi-language pre-commit hooks.</span></li>
+              <li><a href="https://github.com/pydantic/pydantic" target="_blank" rel="noopener"
+                  class="stack-link">Pydantic</a><span class="stack-desc">Data validation via type hints.</span></li>
+            </ul>
+          </div>
+          <div class="stack-card reveal" style="grid-column:1/-1;">
+            <h3>Prompt Patterns</h3>
+            <div class="prompt-box">System: You are an expert engineer. I will provide a task.
+              1. Outline the files to be modified.
+              2. Provide a step-by-step implementation plan.
+              3. Wait for my approval before writing code.
+              Once approved, output complete files without omitting code for brevity.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ RESEARCH STACK ══════════════════════════════════ -->
+    <section class="section" id="research-stack">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">06 &middot; Intelligence</div>
+          <h2>Vibe Research Stack</h2>
+          <p>Curated tools for literature ingestion, synthesis, and writing.</p>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-card reveal">
+            <h3>Literature &amp; PDF Extraction</h3>
+            <ul class="stack-list">
+              <li><a href="https://www.zotero.org/" target="_blank" rel="noopener" class="stack-link">Zotero</a><span
+                  class="stack-desc">Open-source reference management.</span></li>
+              <li><a href="https://github.com/retorquere/zotero-better-bibtex" target="_blank" rel="noopener"
+                  class="stack-link">Better BibTeX</a><span class="stack-desc">Citation key management for
+                  Zotero.</span></li>
+              <li><a href="https://github.com/kermitt2/grobid" target="_blank" rel="noopener"
+                  class="stack-link">GROBID</a><span class="stack-desc">ML extraction from scholarly documents.</span>
+              </li>
+              <li><a href="https://github.com/allenai/nougat" target="_blank" rel="noopener"
+                  class="stack-link">Nougat</a><span class="stack-desc">Neural OCR for academic documents.</span></li>
+            </ul>
+          </div>
+          <div class="stack-card reveal reveal-delay-1">
+            <h3>Knowledge &amp; Writing</h3>
+            <ul class="stack-list">
+              <li><a href="https://obsidian.md/" target="_blank" rel="noopener" class="stack-link">Obsidian</a><span
+                  class="stack-desc">Markdown-based knowledge base.</span></li>
+              <li><a href="https://github.com/plk/biblatex" target="_blank" rel="noopener"
+                  class="stack-link">BibLaTeX</a><span class="stack-desc">Sophisticated bibliography for LaTeX.</span>
+              </li>
+              <li><a href="https://github.com/jgm/pandoc" target="_blank" rel="noopener"
+                  class="stack-link">Pandoc</a><span class="stack-desc">Universal document converter.</span></li>
+            </ul>
+          </div>
+          <div class="stack-card reveal" style="grid-column:1/-1;">
+            <h3>Prompt Patterns</h3>
+            <div class="prompt-box">Task: Literature Triage
+              Input: [Abstract Text]
+              Output JSON:
+              - core_contribution (1 sentence)
+              - relevance_to_my_project (high/med/low)
+              - key_techniques (list)
+              - should_read_full_paper (boolean)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- ═══ FAQ ═════════════════════════════════════════════ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-header reveal" style="align-items:center;text-align:center;">
+          <div class="section-badge">07 &middot; FAQ</div>
+          <h2>FAQ</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <div class="faq-q">What is "Vibe Coding"?</div>
+            <div class="faq-a">A workflow where you direct an AI agent to write code while you focus on architecture,
+              testing, and steering. LitPulse tracks these loops rigorously.</div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Do I need an API key?</div>
+            <div class="faq-a">No. LitPulse uses no backend AI APIs. Fill templates using any web LLM (ChatGPT, Claude,
+              Gemini) and upload the result.</div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Where is my data stored?</div>
+            <div class="faq-a">Locally in plain text files (YAML, JSON, Markdown). No database required — perfect for
+              Git version control.</div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">How does literature import work?</div>
+            <div class="faq-a">Export a CSV from Undermind or Zotero and upload via the dashboard. Auto-detection
+              normalizes it into a unified index.</div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Can I self-host on a server?</div>
+            <div class="faq-a">Yes — standard FastAPI + React. Run on a VPS or keep it local. Designed primarily for
+              desktop use.</div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">What are demo projects?</div>
+            <div class="faq-a">Synthetic showcase data across 16 research domains. No private information is used or
+              stored.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ══════════════════════════════════════════ -->
+    <footer class="footer">
+      <div class="container">
+        <p><strong>LitPulse</strong> — Vibe Coding &amp; Research Monitor<br>
+          Licensed under CC BY-SA 4.0. No telemetry, no cloud DB.<br><br>
+          <a href="https://github.com/Mr-Tieguigui/vibeCR" target="_blank" rel="noopener">GitHub</a> &middot;
+          <a href="#top">Back to top</a>
+        </p>
+      </div>
+    </footer>
+
   </div>
-</section>
-
-<hr class="section-separator">
-
-<!-- ═══ CODING STACK ════════════════════════════════════ -->
-<section class="section" id="coding-stack">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge">05 &middot; Execution</div>
-      <h2>Vibe Coding Stack</h2>
-      <p>Recommended open-source tools and patterns for high-velocity implementation.</p>
-    </div>
-    <div class="stack-grid">
-      <div class="stack-card reveal">
-        <h3>Code Agents &amp; IDEs</h3>
-        <ul class="stack-list">
-          <li><a href="https://code.visualstudio.com/" target="_blank" rel="noopener" class="stack-link">VS Code</a><span class="stack-desc">Extensible editor for custom tooling.</span></li>
-          <li><a href="https://cursor.com/" target="_blank" rel="noopener" class="stack-link">Cursor</a><span class="stack-desc">AI-first IDE with codebase indexing.</span></li>
-          <li><a href="https://codeium.com/windsurf" target="_blank" rel="noopener" class="stack-link">Windsurf</a><span class="stack-desc">Agentic IDE with Cascade.</span></li>
-          <li><a href="https://github.com/paul-gauthier/aider" target="_blank" rel="noopener" class="stack-link">Aider</a><span class="stack-desc">AI pair programming in terminal.</span></li>
-          <li><a href="https://github.com/OpenDevin/OpenDevin" target="_blank" rel="noopener" class="stack-link">OpenDevin</a><span class="stack-desc">Open-source AI software engineer.</span></li>
-        </ul>
-      </div>
-      <div class="stack-card reveal reveal-delay-1">
-        <h3>Build &amp; Tooling</h3>
-        <ul class="stack-list">
-          <li><a href="https://github.com/astral-sh/uv" target="_blank" rel="noopener" class="stack-link">uv</a><span class="stack-desc">Fast Python package installer.</span></li>
-          <li><a href="https://github.com/astral-sh/ruff" target="_blank" rel="noopener" class="stack-link">Ruff</a><span class="stack-desc">Fast Python linter in Rust.</span></li>
-          <li><a href="https://github.com/pre-commit/pre-commit" target="_blank" rel="noopener" class="stack-link">pre-commit</a><span class="stack-desc">Multi-language pre-commit hooks.</span></li>
-          <li><a href="https://github.com/pydantic/pydantic" target="_blank" rel="noopener" class="stack-link">Pydantic</a><span class="stack-desc">Data validation via type hints.</span></li>
-        </ul>
-      </div>
-      <div class="stack-card reveal" style="grid-column:1/-1;">
-        <h3>Prompt Patterns</h3>
-        <div class="prompt-box">System: You are an expert engineer. I will provide a task.
-1. Outline the files to be modified.
-2. Provide a step-by-step implementation plan.
-3. Wait for my approval before writing code.
-Once approved, output complete files without omitting code for brevity.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ RESEARCH STACK ══════════════════════════════════ -->
-<section class="section" id="research-stack">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-badge">06 &middot; Intelligence</div>
-      <h2>Vibe Research Stack</h2>
-      <p>Curated tools for literature ingestion, synthesis, and writing.</p>
-    </div>
-    <div class="stack-grid">
-      <div class="stack-card reveal">
-        <h3>Literature &amp; PDF Extraction</h3>
-        <ul class="stack-list">
-          <li><a href="https://www.zotero.org/" target="_blank" rel="noopener" class="stack-link">Zotero</a><span class="stack-desc">Open-source reference management.</span></li>
-          <li><a href="https://github.com/retorquere/zotero-better-bibtex" target="_blank" rel="noopener" class="stack-link">Better BibTeX</a><span class="stack-desc">Citation key management for Zotero.</span></li>
-          <li><a href="https://github.com/kermitt2/grobid" target="_blank" rel="noopener" class="stack-link">GROBID</a><span class="stack-desc">ML extraction from scholarly documents.</span></li>
-          <li><a href="https://github.com/allenai/nougat" target="_blank" rel="noopener" class="stack-link">Nougat</a><span class="stack-desc">Neural OCR for academic documents.</span></li>
-        </ul>
-      </div>
-      <div class="stack-card reveal reveal-delay-1">
-        <h3>Knowledge &amp; Writing</h3>
-        <ul class="stack-list">
-          <li><a href="https://obsidian.md/" target="_blank" rel="noopener" class="stack-link">Obsidian</a><span class="stack-desc">Markdown-based knowledge base.</span></li>
-          <li><a href="https://github.com/plk/biblatex" target="_blank" rel="noopener" class="stack-link">BibLaTeX</a><span class="stack-desc">Sophisticated bibliography for LaTeX.</span></li>
-          <li><a href="https://github.com/jgm/pandoc" target="_blank" rel="noopener" class="stack-link">Pandoc</a><span class="stack-desc">Universal document converter.</span></li>
-        </ul>
-      </div>
-      <div class="stack-card reveal" style="grid-column:1/-1;">
-        <h3>Prompt Patterns</h3>
-        <div class="prompt-box">Task: Literature Triage
-Input: [Abstract Text]
-Output JSON:
-- core_contribution (1 sentence)
-- relevance_to_my_project (high/med/low)
-- key_techniques (list)
-- should_read_full_paper (boolean)</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="section-separator">
-
-<!-- ═══ FAQ ═════════════════════════════════════════════ -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="section-header reveal" style="align-items:center;text-align:center;">
-      <div class="section-badge">07 &middot; FAQ</div>
-      <h2>FAQ</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item reveal"><div class="faq-q">What is "Vibe Coding"?</div><div class="faq-a">A workflow where you direct an AI agent to write code while you focus on architecture, testing, and steering. LitPulse tracks these loops rigorously.</div></div>
-      <div class="faq-item reveal"><div class="faq-q">Do I need an API key?</div><div class="faq-a">No. LitPulse uses no backend AI APIs. Fill templates using any web LLM (ChatGPT, Claude, Gemini) and upload the result.</div></div>
-      <div class="faq-item reveal"><div class="faq-q">Where is my data stored?</div><div class="faq-a">Locally in plain text files (YAML, JSON, Markdown). No database required — perfect for Git version control.</div></div>
-      <div class="faq-item reveal"><div class="faq-q">How does literature import work?</div><div class="faq-a">Export a CSV from Undermind or Zotero and upload via the dashboard. Auto-detection normalizes it into a unified index.</div></div>
-      <div class="faq-item reveal"><div class="faq-q">Can I self-host on a server?</div><div class="faq-a">Yes — standard FastAPI + React. Run on a VPS or keep it local. Designed primarily for desktop use.</div></div>
-      <div class="faq-item reveal"><div class="faq-q">What are demo projects?</div><div class="faq-a">Synthetic showcase data across 16 research domains. No private information is used or stored.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ══════════════════════════════════════════ -->
-<footer class="footer">
-  <div class="container">
-    <p><strong>LitPulse</strong> — Vibe Coding &amp; Research Monitor<br>
-    Licensed under CC BY-SA 4.0. No telemetry, no cloud DB.<br><br>
-    <a href="https://github.com/Mr-Tieguigui/vibeCR" target="_blank" rel="noopener">GitHub</a> &middot;
-    <a href="#top">Back to top</a></p>
-  </div>
-</footer>
-
-</div>
 </body>
+
 </html>

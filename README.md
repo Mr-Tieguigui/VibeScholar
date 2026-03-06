@@ -1,6 +1,6 @@
 # VibeOps — Vibe Coding & Research Monitor
 
-Static landing page for the [vibeCR](https://github.com/vibeops/vibeops-zero) project.  
+Static landing page for the [vibeCR](https://github.com/vibeops/vibeops) project.  
 Hosted on GitHub Pages. Zero build step, zero dependencies beyond Google Fonts.
 
 ## Structure

@@ -1356,17 +1356,12 @@ h5 {
 
 #contact .contact-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
   gap: 1.5rem;
   align-items: stretch;
 }
 
-#contact .card img {
-  display: block;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   #contact .contact-grid {
     grid-template-columns: 1fr;
   }

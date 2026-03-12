@@ -1337,3 +1337,19 @@ h5 {
     grid-template-columns: 1fr;
   }
 }
+
+.nav-contact-highlight {
+  background: linear-gradient(135deg, #ffcc4d, #ff8a00);
+  color: #111 !important;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(255, 138, 0, 0.28);
+  transition: all 0.25s ease;
+}
+
+.nav-contact-highlight:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(255, 138, 0, 0.38);
+  color: #111 !important;
+}

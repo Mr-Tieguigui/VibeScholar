@@ -69,7 +69,7 @@ gh repo create <YOUR_USERNAME>.github.io --public --description "Resonance landi
 
 ### Step 2: Initialize local git repo and push
 ```bash
-cd ./page_site
+cd /data/guiyao/vibeCR/page_site
 
 # Initialize
 git init
@@ -99,7 +99,7 @@ git push -u origin main
 
 ### Step 5: Update the site
 ```bash
-cd ./page_site
+cd /data/guiyao/vibeCR/page_site
 # Make edits...
 git add -A
 git commit -m "Update landing page"
